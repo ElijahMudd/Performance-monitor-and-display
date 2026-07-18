@@ -16,8 +16,8 @@ Display PC stats on an i2c OLED screen connected to an arduino.
 
 ## Wiring
 
-| OLED | Arduino |
-| VCC  | 5V |
-| GND  | GND |
-| SDA  | A4 |
-| SCL  | A5 |
+| OLED | Arduino |  
+| VCC  | 5V |  
+| GND  | GND |  
+| SDA  | A4 |  
+| SCL  | A5 |  
