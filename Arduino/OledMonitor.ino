@@ -5,6 +5,7 @@
 Adafruit_SSD1306 display(128, 64, &Wire, -1);
 
 int lineSpacing = 20;
+unsigned long lastReceived = 0;
 
 void setup()
 {
@@ -16,7 +17,7 @@ void setup()
   display.setTextSize(2);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0,0);
-  display.println("READY");
+  display.println("Not Connected");
   display.display();
 }
 
@@ -24,6 +25,8 @@ void loop()
 {
     if (Serial.available())
     {
+        lastReceived = millis();
+
         String text = Serial.readStringUntil('\n');
 
         display.clearDisplay();
@@ -49,6 +52,15 @@ void loop()
             start = separator + 1;
         }
 
+        display.display();
+    }
+
+    // 5000 milliseconds = 5 seconds
+    if (millis() - lastReceived >= 5000)
+    {
+        display.clearDisplay();
+        display.setCursor(0, 0);
+        display.println("Not Connected");
         display.display();
     }
 }
