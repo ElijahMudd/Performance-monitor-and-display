@@ -55,7 +55,7 @@ void loop()
         display.display();
     }
 
-    // 5000 milliseconds = 5 seconds
+    //5 second timer
     if (millis() - lastReceived >= 5000)
     {
         display.clearDisplay();
